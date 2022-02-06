@@ -5,10 +5,11 @@ import java.util.ArrayList;
 
 public class Level extends Observable {
 
+	// Package access as to be called in LevelGUI
 	ArrayList<Room> rooms;
 
 	private Room spawn;
-	private Room currentRoom;
+	Room currentRoom;
 	private Boolean condition = true;
 
 	public boolean place(Room r, int x, int y) {
@@ -53,6 +54,38 @@ public class Level extends Observable {
 	public void firstLocation(Room r) {
 		this.spawn = r;
 		this.currentRoom = r;
+	}
+
+	public void moveN() {
+		if (currentRoom.n != null) {
+			currentRoom = currentRoom.n;
+			setChanged();
+			notifyObservers();
+		}
+	}
+
+	public void moveS() {
+		if (currentRoom.s != null) {
+			currentRoom = currentRoom.s;
+			setChanged();
+			notifyObservers();
+		}
+	}
+
+	public void moveE() {
+		if (currentRoom.e != null) {
+			currentRoom = currentRoom.e;
+			setChanged();
+			notifyObservers();
+		}
+	}
+
+	public void moveW() {
+		if (currentRoom.w != null) {
+			currentRoom = currentRoom.w;
+			setChanged();
+			notifyObservers();
+		}
 	}
 
 }
